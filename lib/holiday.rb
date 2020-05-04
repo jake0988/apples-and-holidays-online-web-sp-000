@@ -89,6 +89,7 @@ def all_supplies_in_holidays(holiday_hash)
     i = 0
 
  # seperate double word holidays from single word
+<<<<<<< HEAD
 holiday_hash.each do |season, day|
 # capatilize the season
 
@@ -96,11 +97,16 @@ holiday_hash.each do |season, day|
   season.capitalize!
   puts season + ":"
     day.each do |holiday, value|
+=======
+holiday_hash.collect do |season, holiday|
+
+>>>>>>> eadf60e8acf4f62468ad76245a7069f0e8a22124
  # make holiday symbol name a string
  holiday = holiday.to_s
 
   if holiday =~ (/\_/)
     # split if holiday name has _
+<<<<<<< HEAD
     holiday =  holiday.split(/\_/)
 
 # Capitalize all the words in string
@@ -167,3 +173,43 @@ def all_holidays_with_bbq(holiday_hash)
 end
 array
 end
+=======
+    while holiday =~ (/\_/)
+      holiday.split(/\_/)
+    end
+
+# Capitalize all the words in string
+# join split with a space
+  holiday.each do |hol|
+    hol.capitalize!
+    if i != 0
+      holiday[i].join(hol)
+    end
+    i += 1
+  end
+  else
+    # make sungle word holiday capitalized
+    holiday.capitalize!
+    binding.pry
+  end
+  end
+end
+
+def all_holidays_with_bbq(holiday_hash)
+  # return an array of holiday names (as symbols) where supply lists
+  # include the string "BBQ"
+  array = []
+  holiday_hash.each do |season, value|
+    value.collect do |holiday, supply|
+      supply.collect do |index|
+  if index == "BBQ"
+    array << holiday
+  end
+
+  end
+  # binding.pry
+  end
+end
+array
+end
+>>>>>>> eadf60e8acf4f62468ad76245a7069f0e8a22124
